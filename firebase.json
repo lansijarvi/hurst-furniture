@@ -1,0 +1,20 @@
+{
+  "hosting": {
+    "public": "out",
+    "cleanUrls": true,
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "redirects": [
+      { "source": "/about", "destination": "/#team", "type": 301 },
+      { "source": "/custom-furniture", "destination": "/#work", "type": 301 },
+      { "source": "/built-ins1", "destination": "/#work", "type": 301 },
+      { "source": "/faqs", "destination": "/#faq", "type": 301 },
+      { "source": "/newproject", "destination": "/start", "type": 301 },
+      { "source": "/7309796", "destination": "/#faq", "type": 301 },
+      { "source": "/7383100", "destination": "/start", "type": 301 },
+      { "source": "/store", "destination": "/", "type": 302 }
+    ]
+  },
+  "firestore": { "rules": "firestore.rules" },
+  "storage": { "rules": "storage.rules" },
+  "functions": [{ "source": "functions", "codebase": "default" }]
+}

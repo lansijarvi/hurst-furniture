@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Public can submit an inquiry, but never read, edit, or delete them.
+    match /inquiries/{id} {
+      allow create: if request.resource.data.keys().hasOnly(
+          ['name','email','phone','address','projectType','budget','timeframe','details','photos','createdAt'])
+        && request.resource.data.name is string && request.resource.data.name.size() > 0 && request.resource.data.name.size() < 200
+        && request.resource.data.email is string && request.resource.data.email.matches('.+@.+\\..+')
+        && request.resource.data.details is string && request.resource.data.details.size() < 10000
+        && request.resource.data.photos is list && request.resource.data.photos.size() <= 6
+        && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if false;
+    }
+    // Everything else is closed. (The "mail" collection is written by Cloud Functions only.)
+    match /{document=**} { allow read, write: if false; }
+  }
+}
