@@ -5,11 +5,11 @@ import Stars from "./Stars";
 
 const links = [
   { href: "/#work", label: "Work" },
-  { href: "/woods", label: "Woods" },
   { href: "/reviews", label: "Reviews" },
   { href: "/#pricing", label: "Pricing" },
   { href: "/#team", label: "Team" },
   { href: "/#faq", label: "FAQ" },
+  { href: "/woods", label: "Woods" },
 ];
 
 export default function Header() {
