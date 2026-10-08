@@ -40,6 +40,12 @@ export const team = [
   { name: "Tommy Teav", role: "Builder", photo: "" },
   { name: "Eric Baumgartner", role: "Builder", photo: "" },
   { name: "Dani Hopple", role: "Designer, Builder", photo: "" },
+  { name: "Aaron Lorenz", role: "Designer, Builder", photo: "" },
+  { name: "Will Lachance", role: "Builder", photo: "" },
+  { name: "Brent Driscoll", role: "Builder", photo: "" },
+  { name: "Adam Price", role: "Builder", photo: "" },
+  { name: "Peter Haines", role: "Builder", photo: "" },
+  { name: "Sean Westlake", role: "Director of Marketing", photo: "" },
 ];
 
 // Add real projects here. Put images in /public/work/ and reference them as "/work/filename.jpg".
