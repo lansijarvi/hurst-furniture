@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Barlow, Barlow_Condensed } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { contact } from "@/lib/site";
 import "./globals.css";
 
-const body = Barlow({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-body" });
-const display = Barlow_Condensed({ subsets: ["latin"], weight: ["600", "700"], variable: "--font-display" });
+const body = Manrope({ subsets: ["latin"], variable: "--font-body" });
+const display = Fraunces({ subsets: ["latin"], variable: "--font-display" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.hurstfurniture.com"),

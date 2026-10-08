@@ -3,5 +3,5 @@ import { RatingBadge, useReviews } from "./Reviews";
 
 export default function HeroRating() {
   const data = useReviews();
-  return <RatingBadge data={data} dark />;
+  return <RatingBadge data={data} />;
 }

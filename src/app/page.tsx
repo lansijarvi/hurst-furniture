@@ -2,6 +2,7 @@ import Link from "next/link";
 import HeroRating from "@/components/HeroRating";
 import WorkGallery from "@/components/WorkGallery";
 import Reviews from "@/components/Reviews";
+import ReviewBand from "@/components/ReviewBand";
 import Faq, { faqJsonLd } from "@/components/Faq";
 import ProjectForm from "@/components/ProjectForm";
 import { contact, team } from "@/lib/site";
@@ -9,7 +10,7 @@ import { contact, team } from "@/lib/site";
 export default function Home() {
   return (
     <>
-      <section className="hero dark">
+      <section className="hero">
         <div className="wrap hero-grid">
           <div className="hero-copy">
             <h1>Let's refine your space together.</h1>
@@ -19,7 +20,7 @@ export default function Home() {
             </p>
             <div className="btn-row">
               <Link href="/start" className="btn btn-accent btn-big">Start a project</Link>
-              <a href="#work" className="btn btn-outline-light btn-big">See our work</a>
+              <a href="#work" className="btn btn-outline btn-big">See our work</a>
             </div>
             <HeroRating />
           </div>
@@ -32,6 +33,8 @@ export default function Home() {
         </div>
       </section>
 
+      <ReviewBand />
+
       <section className="facts">
         <div className="wrap facts-row">
           <div><strong>Since 2011</strong><span>Building in Seattle</span></div>
@@ -41,15 +44,15 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="reviews" className="section-band">
+        <div className="wrap section"><Reviews /></div>
+      </section>
+
       <section id="work" className="section wrap">
         <div className="section-head">
           <h2>Built to be lived with</h2>
         </div>
         <WorkGallery />
-      </section>
-
-      <section id="reviews" className="section-band">
-        <div className="wrap section"><Reviews /></div>
       </section>
 
       <section id="pricing" className="section wrap">
@@ -76,7 +79,7 @@ export default function Home() {
               <p>A 50% deposit starts design drawings and material purchasing. You pay the actual cost for the work completed.</p>
             </li>
           </ol>
-          <aside className="numbers dark">
+          <aside className="numbers tint">
             <h3>The numbers</h3>
             <p>20% markup on subcontractors and reimbursable expenses like materials, plus labor at [LABOR RATE] per hour.</p>
             <p>Fixed quotes would mean padding every job 10 to 15 percent to cover the unknowns. We'd rather charge you for what it actually takes.</p>
@@ -84,7 +87,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="dark">
+      <section className="tint">
         <div className="wrap section about">
           <div className="wood about-photo" aria-hidden="true" />
           <div className="about-copy">
@@ -147,7 +150,7 @@ export default function Home() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd()) }} />
       </section>
 
-      <section id="start" className="dark">
+      <section id="start" className="tint">
         <div className="wrap section start-grid">
           <div className="start-copy">
             <h2>We'd love to know your ideas!</h2>

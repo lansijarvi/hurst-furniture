@@ -27,12 +27,15 @@ export function useReviews() {
   return data;
 }
 
-export function RatingBadge({ data, dark = false }: { data: ReviewData | null; dark?: boolean }) {
-  if (!data) return null;
+export function RatingBadge({ data }: { data: ReviewData | null }) {
   return (
-    <a href="/reviews" className={dark ? "rating-badge dark" : "rating-badge"}>
-      <Stars rating={data.rating} />
-      <span><strong>{data.rating.toFixed(1)}</strong> on Google, {data.count} reviews</span>
+    <a href="/reviews" className="rating-badge">
+      <Stars rating={data?.rating ?? 5} />
+      {data ? (
+        <span><strong>{data.rating.toFixed(1)}</strong> on Google, {data.count} reviews</span>
+      ) : (
+        <span>Read our Google reviews</span>
+      )}
     </a>
   );
 }
@@ -45,6 +48,7 @@ export default function Reviews({ full = false }: { full?: boolean }) {
   return (
     <div className="reviews-layout">
       <div className="reviews-intro">
+        <p className="eyebrow">Reviews</p>
         <h2>What our clients say</h2>
         {data && (
           <div className="rating-card">
@@ -55,22 +59,25 @@ export default function Reviews({ full = false }: { full?: boolean }) {
             </div>
           </div>
         )}
-        <p>
-          Had us build something for you? We'd be grateful if you shared your experience. It takes about a
-          minute and helps your neighbors find us.
-        </p>
-        <div className="btn-row">
-          <a href={writeReviewUrl} target="_blank" rel="noopener" className="btn btn-accent">
+        <div className="write-review">
+          <Stars size={22} />
+          <h3>Worked with us?</h3>
+          <p>
+            Had us build something for you? We'd be grateful if you shared your experience. It takes about a
+            minute and helps your neighbors find us.
+          </p>
+          <a href={writeReviewUrl} target="_blank" rel="noopener" className="btn btn-sun btn-big">
             Leave a Google review
           </a>
-          <a href={allReviewsUrl} target="_blank" rel="noopener" className="btn btn-outline">
-            Read all reviews on Google
-          </a>
         </div>
+        <a href={allReviewsUrl} target="_blank" rel="noopener" className="btn btn-outline">
+          Read all reviews on Google
+        </a>
       </div>
 
       <div className="reviews-cards">
         <figure className="review-feature">
+          <Stars size={20} />
           <blockquote>{featuredTestimonial.quote}</blockquote>
           <figcaption>{featuredTestimonial.author}</figcaption>
         </figure>

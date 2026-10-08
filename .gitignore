@@ -5,3 +5,5 @@ out
 functions/node_modules
 .firebase
 *.log
+functions/.env*
+tsconfig.tsbuildinfo

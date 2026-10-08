@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import Stars from "./Stars";
 
 const links = [
   { href: "/#work", label: "Work" },
@@ -33,6 +34,9 @@ export default function Header() {
               {l.label}
             </Link>
           ))}
+          <Link href="/review" className="nav-review" onClick={() => setOpen(false)}>
+            <Stars size={14} /> Leave a review
+          </Link>
           <Link href="/start" className="btn btn-accent" onClick={() => setOpen(false)}>
             Start a project
           </Link>

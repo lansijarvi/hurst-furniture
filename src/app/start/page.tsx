@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function StartPage() {
   return (
-    <section className="dark page-top">
+    <section className="page-top">
       <div className="wrap section start-grid">
         <div className="start-copy">
           <h1>Get in touch</h1>

@@ -8,14 +8,17 @@ Rebuild of Hurst Custom Furniture's site, replacing a Format.com template site.
 - Firestore `inquiries` (project form, create-only rules) + Storage `inquiries/{id}/` (photo uploads)
 - Cloud Functions (`functions/`): `getReviews` (Google Places API → rating + reviews, cached 1h),
   `notifyInquiry` (writes to `mail` collection for the Trigger Email extension)
-- Plain CSS in `src/app/globals.css` (no Tailwind). Fonts: Barlow + Barlow Condensed via next/font.
+- Plain CSS in `src/app/globals.css` (no Tailwind). Fonts: Fraunces (headings) + Manrope (body) via next/font.
 
 ## Content
 - All editable copy/data is in `src/lib/site.ts` (team, projects, FAQ, contact, review links).
 - Site copy is Hurst's own. Edit with minimal intervention and keep their voice.
 
 ## Look
-PNW woodshop: fir green `#1c2a23`, paper `#eeebe5`, cedar `#9e4423`. Wood-grain `.wood` divs are photo placeholders.
+Light, modern home: warm white `#fbfaf6`, forest green `#2f5d46` (primary buttons), sage `#eef2e8` (tinted sections), sunshine yellow `#f2c94c` / soft `#fcf3d3` (review CTAs). Rounded cards, pill buttons. `.wood` divs are soft sage photo placeholders.
+
+## Reviews
+Reviews are a priority: yellow review band under the hero, reviews section right after facts, "Leave a review" in the nav, and `/review` short link (redirects to Google's write-a-review box; use it on cards/QR codes).
 
 ## Open items
 - Real photos: hero, projects (`/public/work/`), Jonathan, team headshots
