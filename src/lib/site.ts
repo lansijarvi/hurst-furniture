@@ -8,17 +8,22 @@ export const contact = {
   city: "Seattle, WA 98107",
 };
 
+// Place ID of the "Hurst Custom Furniture LLC" Google Business listing (the one with the reviews),
+// not the bare 943 NW 50th St address listing, which has posting turned off.
 const placeId = process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID || "";
+
+// Until the Place ID is set, both links fall back to a Google search that shows Hurst's business panel.
+const googleSearchUrl = "https://www.google.com/search?q=Hurst+Custom+Furniture+LLC+Seattle";
 
 // Opens Google's "write a review" box for Hurst directly.
 export const writeReviewUrl = placeId
   ? `https://search.google.com/local/writereview?placeid=${placeId}`
-  : "https://www.google.com/maps/search/Hurst+Concepts+Seattle";
+  : googleSearchUrl;
 
-// Opens a Google search for Hurst with the reviews pop-up already open.
-// ludocid + lrd identify Hurst's Google Business listing (taken from Google's own reviews link).
-export const allReviewsUrl =
-  "https://www.google.com/search?q=Hurst+Concepts+Seattle&ludocid=12278435383370975166#lrd=0x549015b6f4d46bed:0xaa65c3ed5f6a07be,1";
+// Opens Google's reviews panel for Hurst.
+export const allReviewsUrl = placeId
+  ? `https://search.google.com/local/reviews?placeid=${placeId}`
+  : googleSearchUrl;
 
 export const featuredTestimonial = {
   quote:
