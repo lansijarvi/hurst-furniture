@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Fraunces, Manrope } from "next/font/google";
+import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { contact } from "@/lib/site";
 import "./globals.css";
 
-const body = Manrope({ subsets: ["latin"], variable: "--font-body" });
-const display = Fraunces({ subsets: ["latin"], variable: "--font-display" });
+const body = Inter({ subsets: ["latin"], variable: "--font-body" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.hurstfurniture.com"),
@@ -36,7 +35,7 @@ const localBusiness = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${body.variable} ${display.variable}`}>
+    <html lang="en" className={body.variable}>
       <body>
         <a href="#main" className="skip">Skip to content</a>
         <Header />
