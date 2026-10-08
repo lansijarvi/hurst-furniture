@@ -15,10 +15,10 @@ export const writeReviewUrl = placeId
   ? `https://search.google.com/local/writereview?placeid=${placeId}`
   : "https://www.google.com/maps/search/Hurst+Concepts+Seattle";
 
-// Opens Google's reviews panel for Hurst.
-export const allReviewsUrl = placeId
-  ? `https://search.google.com/local/reviews?placeid=${placeId}`
-  : "https://www.google.com/maps/search/Hurst+Concepts+Seattle";
+// Opens a Google search for Hurst with the reviews pop-up already open.
+// ludocid + lrd identify Hurst's Google Business listing (taken from Google's own reviews link).
+export const allReviewsUrl =
+  "https://www.google.com/search?q=Hurst+Concepts+Seattle&ludocid=12278435383370975166#lrd=0x549015b6f4d46bed:0xaa65c3ed5f6a07be,1";
 
 export const featuredTestimonial = {
   quote:
