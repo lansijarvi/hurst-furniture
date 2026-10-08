@@ -20,6 +20,10 @@ Light, modern home: warm white `#fbfaf6`, forest green `#2f5d46` (primary button
 ## Reviews
 Reviews are a priority: yellow review band under the hero, reviews section right after facts, "Leave a review" in the nav, and `/review` short link (redirects to Google's write-a-review box; use it on cards/QR codes).
 
+## Wood guide (/woods)
+Data in `woods` in `src/lib/site.ts` (Janka lbf, uses, PNW tag). Photos in `/public/woods/` are from Wikimedia Commons;
+CC BY / BY-SA ones need their `credit` kept (shown under "Photo credits"). Replace with shop photos when available.
+
 ## Open items
 - Real photos: hero, projects (`/public/work/`), Jonathan, team headshots
 - Placeholders: `[LABOR RATE]`, testimonial `[Client name]`, project titles

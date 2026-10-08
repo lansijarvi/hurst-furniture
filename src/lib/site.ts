@@ -114,3 +114,41 @@ export const faqs = [
     ],
   },
 ];
+
+// Wood guide (/woods). Janka side hardness in pounds-force (lbf), commonly published values.
+// Photos in /public/woods/ are free-licensed from Wikimedia Commons; `credit` is required for CC BY / BY-SA.
+// Swap in shop photos any time (then drop the credit). `tone` tints the placeholder if there's no image.
+export type Credit = { author: string; license: string; licenseUrl: string; source: string };
+export type Wood = { name: string; janka: number; uses: string; local?: boolean; image: string; tone: string; credit?: Credit };
+export const woods: Wood[] = [
+  { name: "Hickory", janka: 1820, uses: "Chairs, tool handles, hard-wearing floors", image: "/woods/hickory.jpg", tone: "#c9a77c",
+    credit: { author: "Philipp Zinger", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0", source: "https://commons.wikimedia.org/wiki/File:Hickory_Holz.JPG" } },
+  { name: "Hard maple", janka: 1450, uses: "Tabletops, cutting boards, drawers", image: "/woods/hard-maple.jpg", tone: "#e6d3b0",
+    credit: { author: "Philipp Zinger", license: "CC BY-SA 3.0", licenseUrl: "http://creativecommons.org/licenses/by-sa/3.0/", source: "https://commons.wikimedia.org/wiki/File:Ahorn_Holz.JPG" } },
+  { name: "Sapele", janka: 1410, uses: "Furniture, doors, ribbon-figured panels", image: "/woods/sapele.jpg", tone: "#8a4a2e",
+    credit: { author: "Philipp Zinger", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0", source: "https://commons.wikimedia.org/wiki/File:Sapelli-Mahagoni_Holz.JPG" } },
+  { name: "White oak", janka: 1360, uses: "Tables, built-ins, cabinetry, floors", image: "/woods/white-oak.jpg", tone: "#c8a77a",
+    credit: { author: "Philipp Zinger", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0", source: "https://commons.wikimedia.org/wiki/File:Wei%C3%9Feiche_Holz.JPG" } },
+  { name: "Ash", janka: 1320, uses: "Chairs, tables, bent parts", image: "/woods/ash.jpg", tone: "#dcc59c",
+    credit: { author: "Philipp Zinger", license: "CC BY-SA 3.0", licenseUrl: "http://creativecommons.org/licenses/by-sa/3.0/", source: "https://commons.wikimedia.org/wiki/File:Esche_gemeine_Holz.JPG" } },
+  { name: "Red oak", janka: 1290, uses: "Cabinetry, trim, furniture", image: "/woods/red-oak.jpg", tone: "#c99a72",
+    credit: { author: "Philipp Zinger", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0", source: "https://commons.wikimedia.org/wiki/File:Roteiche_Holz.JPG" } },
+  { name: "Teak", janka: 1070, uses: "Outdoor furniture, bathrooms, boats", image: "/woods/teak.jpg", tone: "#a87a46",
+    credit: { author: "Philipp Zinger", license: "CC BY-SA 3.0", licenseUrl: "http://creativecommons.org/licenses/by-sa/3.0/", source: "https://commons.wikimedia.org/wiki/File:Teak_Holz.JPG" } },
+  { name: "Black walnut", janka: 1010, uses: "Dining tables, casework, statement pieces", image: "/woods/black-walnut.jpg", tone: "#5a3e2b",
+    credit: { author: "Brya", license: "CC0", licenseUrl: "http://creativecommons.org/publicdomain/zero/1.0/deed.en", source: "https://commons.wikimedia.org/wiki/File:BlWal03.jpg" } },
+  { name: "Cherry", janka: 950, uses: "Fine furniture, cabinetry; darkens with age", image: "/woods/cherry.jpg", tone: "#a8603e",
+    credit: { author: "Philipp Zinger", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0", source: "https://commons.wikimedia.org/wiki/File:Amerikanischer_Kirschbaum_Holz.JPG" } },
+  { name: "Bigleaf maple", janka: 850, local: true, uses: "Figured tops, accents, furniture", image: "/woods/bigleaf-maple.jpg", tone: "#dcc4a0",
+    credit: { author: "Stephen Ondich", license: "CC0", licenseUrl: "http://creativecommons.org/publicdomain/zero/1.0/deed.en", source: "https://commons.wikimedia.org/wiki/File:Quilt_Figured_Big_Leaf_Maple_Lumber_boards.jpg" } },
+  { name: "Mahogany", janka: 800, uses: "Fine furniture, carving, doors", image: "/woods/mahogany.jpg", tone: "#8c4a32",
+    credit: { author: "Philipp Zinger", license: "CC BY-SA 3.0", licenseUrl: "http://creativecommons.org/licenses/by-sa/3.0/", source: "https://commons.wikimedia.org/wiki/File:Swietenia_macrophylla_wood.jpg" } },
+  { name: "Douglas fir", janka: 620, local: true, uses: "Built-ins, trim, beams, doors", image: "/woods/douglas-fir.jpg", tone: "#d4a26f",
+    credit: { author: "Philipp Zinger", license: "CC BY-SA 3.0", licenseUrl: "http://creativecommons.org/licenses/by-sa/3.0/", source: "https://commons.wikimedia.org/wiki/File:Douglasie_Holz.JPG" } },
+  { name: "Red alder", janka: 590, local: true, uses: "Cabinetry, painted or stained furniture", image: "/woods/red-alder.jpg", tone: "#c98f62",
+    credit: { author: "Philipp Zinger", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0", source: "https://commons.wikimedia.org/wiki/File:Erle_Holz.JPG" } },
+  { name: "Eastern white pine", janka: 380, uses: "Painted furniture, shelving, trim", image: "/woods/white-pine.jpg", tone: "#ead7b0",
+    credit: { author: "Philipp Zinger", license: "CC BY-SA 3.0", licenseUrl: "http://creativecommons.org/licenses/by-sa/3.0/", source: "https://commons.wikimedia.org/wiki/File:Weymouth-Kiefer_Holz.JPG" } },
+  { name: "Western red cedar", janka: 350, local: true, uses: "Outdoor projects, closets, siding", image: "/woods/red-cedar.jpg", tone: "#b06a45",
+    credit: { author: "Brya", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0", source: "https://commons.wikimedia.org/wiki/File:W_Redced.jpg" } },
+];
