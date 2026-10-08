@@ -15,9 +15,9 @@ export const writeReviewUrl = placeId
   ? `https://search.google.com/local/writereview?placeid=${placeId}`
   : "https://www.google.com/maps/search/Hurst+Concepts+Seattle";
 
-// Opens the full list of Hurst reviews on Google Maps.
+// Opens Google's reviews panel for Hurst.
 export const allReviewsUrl = placeId
-  ? `https://www.google.com/maps/place/?q=place_id:${placeId}`
+  ? `https://search.google.com/local/reviews?placeid=${placeId}`
   : "https://www.google.com/maps/search/Hurst+Concepts+Seattle";
 
 export const featuredTestimonial = {
