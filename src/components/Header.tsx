@@ -17,8 +17,11 @@ export default function Header() {
     <header className="site-header">
       <div className="wrap header-row">
         <Link href="/" className="brand" onClick={() => setOpen(false)}>
-          <span className="brand-name">Hurst Concepts</span>
-          <span className="brand-sub">Custom furniture and millwork, Ballard</span>
+          <img src="/logo.png" alt="" width="48" height="48" className="brand-logo" />
+          <span className="brand-text">
+            <span className="brand-name">Hurst Concepts</span>
+            <span className="brand-sub">Custom furniture and millwork, Ballard</span>
+          </span>
         </Link>
         <button
           className="menu-toggle"

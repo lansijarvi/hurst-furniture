@@ -1,13 +1,20 @@
 import Link from "next/link";
 import { contact, writeReviewUrl } from "@/lib/site";
+import Social from "./Social";
+import ShareButton from "./ShareButton";
 
 export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="wrap footer-grid">
         <div>
+          <img src="/logo.png" alt="" width="56" height="56" className="footer-logo" />
           <p className="footer-brand">Hurst Concepts</p>
           <p>Custom furniture, built-ins and millwork, made in Ballard since 2011.</p>
+          <div className="footer-actions">
+            <Social />
+            <ShareButton />
+          </div>
         </div>
         <div>
           <p className="footer-head">Visit</p>

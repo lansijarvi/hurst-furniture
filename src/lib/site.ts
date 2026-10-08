@@ -25,6 +25,18 @@ export const allReviewsUrl = placeId
   ? `https://search.google.com/local/reviews?placeid=${placeId}`
   : googleSearchUrl;
 
+// Map and directions for the Ballard shop (keyless Google Maps embed).
+const mapsQuery = encodeURIComponent("Hurst Custom Furniture LLC, 943 NW 50th St, Seattle, WA 98107");
+export const mapEmbedUrl = `https://www.google.com/maps?q=${mapsQuery}&output=embed`;
+export const directionsUrl = placeId
+  ? `https://www.google.com/maps/dir/?api=1&destination=${mapsQuery}&destination_place_id=${placeId}`
+  : `https://www.google.com/maps/dir/?api=1&destination=${mapsQuery}`;
+
+export const social = {
+  facebook: "https://www.facebook.com/hurstcustomfurniture",
+  instagram: "https://www.instagram.com/hurst_furniture/",
+};
+
 export const featuredTestimonial = {
   quote:
     "I highly recommend the company and would not hesitate to use them again. They are capable of very high quality work for almost any type of furniture or other wood product.",

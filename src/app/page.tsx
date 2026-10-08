@@ -5,6 +5,7 @@ import Reviews from "@/components/Reviews";
 import ReviewBand from "@/components/ReviewBand";
 import Faq, { faqJsonLd } from "@/components/Faq";
 import ProjectForm from "@/components/ProjectForm";
+import ShopMap from "@/components/ShopMap";
 import { contact, team } from "@/lib/site";
 
 export default function Home() {
@@ -168,6 +169,7 @@ export default function Home() {
               <a href={contact.phoneHref}>{contact.phone}</a><br />
               {contact.street}, {contact.city}
             </p>
+            <ShopMap />
           </div>
           <div className="form-panel"><ProjectForm /></div>
         </div>
