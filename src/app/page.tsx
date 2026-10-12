@@ -51,6 +51,7 @@ export default function Home() {
 
       <section id="work" className="section wrap">
         <div className="section-head">
+          <p className="eyebrow">Our work</p>
           <h2>Built to be lived with</h2>
         </div>
         <WorkGallery />
@@ -58,6 +59,7 @@ export default function Home() {
 
       <section id="pricing" className="section wrap">
         <div className="section-head">
+          <p className="eyebrow">Pricing</p>
           <h2>Cost plus, no padding</h2>
           <p>
             At Hurst Concepts, we function on a "Cost Plus" model, and pricing is based on our best estimate of
@@ -92,6 +94,7 @@ export default function Home() {
         <div className="wrap section about">
           <div className="wood about-photo" aria-hidden="true" />
           <div className="about-copy">
+            <p className="eyebrow">The founder</p>
             <h2>About Jonathan Hurst</h2>
             <p>
               While earning a degree in mechanical engineering from Stevens Institute of Technology, Jonathan spent
@@ -120,7 +123,10 @@ export default function Home() {
 
       <section id="team" className="section wrap">
         <div className="section-head split">
-          <h2>Meet the makers</h2>
+          <div className="kicker-head">
+            <p className="eyebrow">The team</p>
+            <h2>Meet the makers</h2>
+          </div>
           <p>
             We are a tight-knit team of ten, including Jonathan. Between us are backgrounds in manufacturing
             education, aerospace engineering, large-scale construction, and fine arts criticism and production.
@@ -145,6 +151,7 @@ export default function Home() {
 
       <section id="faq" className="section-band">
         <div className="wrap section narrow">
+          <p className="eyebrow">FAQ</p>
           <h2>Good questions</h2>
           <Faq />
         </div>
@@ -154,6 +161,7 @@ export default function Home() {
       <section id="start" className="tint">
         <div className="wrap section start-grid">
           <div className="start-copy">
+            <p className="eyebrow">Get in touch</p>
             <h2>We'd love to know your ideas!</h2>
             <p>
               Jonathan created this business to connect directly with people and to help design pieces that will

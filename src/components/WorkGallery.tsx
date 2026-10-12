@@ -23,6 +23,7 @@ export default function WorkGallery() {
             ) : (
               <div className={i % 2 ? "wood wood-dark" : "wood"} aria-hidden="true" />
             )}
+            <span className="eyebrow">{p.kind === "furniture" ? "Custom furniture" : "Built-ins and millwork"}</span>
             <h3>{p.title}</h3>
             <p>{p.detail}</p>
           </article>
