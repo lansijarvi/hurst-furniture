@@ -7,11 +7,12 @@ service firebase.storage {
         && request.resource.contentType.matches('image/.*');
       allow read, update, delete: if false;
     }
-    // Site photos uploaded from /admin: public read, editors (listed in Firestore /admins) upload images under 15 MB.
+    // Site photos uploaded from /admin: public read; editors upload images under 15 MB.
+    // Editor user IDs must match the docs in Firestore /admins (add new editors in both places).
     match /site/{allPaths=**} {
       allow read: if true;
       allow write: if request.auth != null
-        && firestore.exists(/databases/(default)/documents/admins/$(request.auth.uid))
+        && request.auth.uid in ['f6u6Nc0WHHZCopG1UiTXwuA0kqF3']
         && request.resource.size < 15 * 1024 * 1024
         && request.resource.contentType.matches('image/.*');
     }
