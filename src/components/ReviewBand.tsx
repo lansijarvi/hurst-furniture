@@ -2,10 +2,12 @@
 import Stars from "./Stars";
 import { useReviews } from "./Reviews";
 import { writeReviewUrl } from "@/lib/site";
+import { useContent } from "@/lib/useContent";
 
 // Yellow strip under the hero: rating (once the getReviews function is live) + one-tap "leave a review".
 export default function ReviewBand() {
   const data = useReviews();
+  const c = useContent().reviewBand;
   return (
     <section className="review-band" aria-label="Google reviews">
       <div className="wrap review-band-row">
@@ -14,9 +16,9 @@ export default function ReviewBand() {
           {data ? (
             <span><strong>{data.rating.toFixed(1)}</strong> from {data.count} Google reviews</span>
           ) : (
-            <strong>Loved by Seattle homeowners</strong>
+            <strong>{c.headline}</strong>
           )}
-          <span>Worked with us? Your review helps neighbors find us.</span>
+          <span>{c.text}</span>
         </div>
         <div className="btn-row">
           <a href={writeReviewUrl} target="_blank" rel="noopener" className="btn btn-accent">Leave a review</a>

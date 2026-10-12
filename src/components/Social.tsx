@@ -1,7 +1,9 @@
-import { social } from "@/lib/site";
+"use client";
+import { useContent } from "@/lib/useContent";
 
 // Facebook + Instagram icon links.
 export default function Social() {
+  const social = useContent().social;
   return (
     <div className="social">
       <a href={social.facebook} target="_blank" rel="noopener" aria-label="Hurst on Facebook">

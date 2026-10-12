@@ -1,35 +1,35 @@
+"use client";
 import Link from "next/link";
 import HeroRating from "@/components/HeroRating";
 import WorkGallery from "@/components/WorkGallery";
 import Reviews from "@/components/Reviews";
 import ReviewBand from "@/components/ReviewBand";
-import Faq, { faqJsonLd } from "@/components/Faq";
+import Faq from "@/components/Faq";
 import ProjectForm from "@/components/ProjectForm";
 import ShopMap from "@/components/ShopMap";
-import { contact, team } from "@/lib/site";
+import Photo from "@/components/Photo";
+import { useContent } from "@/lib/useContent";
 
 export default function Home() {
+  const c = useContent();
+  const [heroMain, heroA, heroB] = c.hero.images;
   return (
     <>
       <section className="hero">
         <div className="wrap hero-grid">
           <div className="hero-copy">
-            <h1>Let's refine your space together.</h1>
-            <p className="lede">
-              Let our team of highly skilled craftspeople create pieces or complete projects that are durable,
-              beautiful and memorable.
-            </p>
+            <h1>{c.hero.title}</h1>
+            <p className="lede">{c.hero.lede}</p>
             <div className="btn-row">
               <Link href="/start" className="btn btn-accent btn-big">Start a project</Link>
               <a href="#work" className="btn btn-outline btn-big">See our work</a>
             </div>
             <HeroRating />
           </div>
-          <div className="hero-images" aria-hidden="true">
-            {/* Replace with <img src="/work/hero.jpg" alt="..."> once photos are ready */}
-            <div className="wood hero-main" />
-            <div className="wood wood-dark" />
-            <div className="wood" />
+          <div className="hero-images">
+            <Photo src={heroMain} className="hero-main" />
+            <Photo src={heroA} className="wood-dark" />
+            <Photo src={heroB} />
           </div>
         </div>
       </section>
@@ -38,10 +38,9 @@ export default function Home() {
 
       <section className="facts">
         <div className="wrap facts-row">
-          <div><strong>Since 2011</strong><span>Building in Seattle</span></div>
-          <div><strong>Engineer-led</strong><span>Founded by an aerospace engineer</span></div>
-          <div><strong>Licensed GC</strong><span>Furniture to finish carpentry</span></div>
-          <div><strong>Ballard shop</strong><span>{contact.street}</span></div>
+          {c.facts.map((f, i) => (
+            <div key={i}><strong>{f.title}</strong><span>{f.text}</span></div>
+          ))}
         </div>
       </section>
 
@@ -51,72 +50,41 @@ export default function Home() {
 
       <section id="work" className="section wrap">
         <div className="section-head">
-          <p className="eyebrow">Our work</p>
-          <h2>Built to be lived with</h2>
+          <p className="eyebrow">{c.work.kicker}</p>
+          <h2>{c.work.title}</h2>
         </div>
         <WorkGallery />
       </section>
 
       <section id="pricing" className="section wrap">
         <div className="section-head">
-          <p className="eyebrow">Pricing</p>
-          <h2>Cost plus, no padding</h2>
-          <p>
-            At Hurst Concepts, we function on a "Cost Plus" model, and pricing is based on our best estimate of
-            what will be required to complete any job. We try to be as conservative as possible, and will charge
-            the actual cost for the work completed.
-          </p>
+          <p className="eyebrow">{c.pricing.kicker}</p>
+          <h2>{c.pricing.title}</h2>
+          <p>{c.pricing.intro}</p>
         </div>
         <div className="steps">
           <ol>
-            <li>
-              <h3>Tell us your idea</h3>
-              <p>No finished design needed. Our team works with you to collect the details and bring what you're imagining to life.</p>
-            </li>
-            <li>
-              <h3>Get an estimate</h3>
-              <p>Within a day we're reaching out to suppliers and calculating labor. Expect estimates or questions within 1–2 business days.</p>
-            </li>
-            <li>
-              <h3>Design and build</h3>
-              <p>A 50% deposit starts design drawings and material purchasing. You pay the actual cost for the work completed.</p>
-            </li>
+            {c.pricing.steps.map((s, i) => (
+              <li key={i}>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </li>
+            ))}
           </ol>
           <aside className="numbers tint">
-            <h3>The numbers</h3>
-            <p>20% markup on subcontractors and reimbursable expenses like materials, plus labor at [LABOR RATE] per hour.</p>
-            <p>Fixed quotes would mean padding every job 10 to 15 percent to cover the unknowns. We'd rather charge you for what it actually takes.</p>
+            <h3>{c.pricing.numbersTitle}</h3>
+            {c.pricing.numbers.map((p, i) => <p key={i}>{p}</p>)}
           </aside>
         </div>
       </section>
 
       <section className="tint">
         <div className="wrap section about">
-          <div className="wood about-photo" aria-hidden="true" />
+          <Photo src={c.about.photo} className="about-photo" alt={c.about.title} />
           <div className="about-copy">
-            <p className="eyebrow">The founder</p>
-            <h2>About Jonathan Hurst</h2>
-            <p>
-              While earning a degree in mechanical engineering from Stevens Institute of Technology, Jonathan spent
-              his spare time assisting with major residential additions, renovations, and cabinetry work.
-            </p>
-            <p>
-              After graduation, Jonathan began working in the aerospace industry for United Technologies, and
-              continued his woodworking practice in Connecticut. He finally touched down in Seattle, Washington, to
-              work on the 787 flight test program where he used the creative freedom of making custom furniture and
-              finished pieces as a balance for the stress of his job.
-            </p>
-            <p>
-              Throughout the six-plus years that he worked as an aerospace engineer, wood crafting was his creative
-              outlet. After some time, Jonathan decided to open a woodworking business and in 2011 created Hurst
-              Concepts.
-            </p>
-            <p>
-              Jonathan is now a custom woodworker and licensed general contractor specializing in fine home
-              furniture, cabinetry, and high-end finish carpentry. His experience as a mechanical engineer creates a
-              unique viewpoint, style, and approach to structural design throughout all of his woodcrafting
-              endeavors.
-            </p>
+            <p className="eyebrow">{c.about.kicker}</p>
+            <h2>{c.about.title}</h2>
+            {c.about.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
           </div>
         </div>
       </section>
@@ -124,17 +92,14 @@ export default function Home() {
       <section id="team" className="section wrap">
         <div className="section-head split">
           <div className="kicker-head">
-            <p className="eyebrow">The team</p>
-            <h2>Meet the makers</h2>
+            <p className="eyebrow">{c.team.kicker}</p>
+            <h2>{c.team.title}</h2>
           </div>
-          <p>
-            We are a tight-knit team of ten, including Jonathan. Between us are backgrounds in manufacturing
-            education, aerospace engineering, large-scale construction, and fine arts criticism and production.
-          </p>
+          <p>{c.team.intro}</p>
         </div>
         <ul className="team-grid">
-          {team.map((m) => (
-            <li key={m.name}>
+          {c.team.members.map((m, i) => (
+            <li key={i}>
               {m.photo ? (
                 <img src={m.photo} alt={m.name} loading="lazy" />
               ) : (
@@ -151,31 +116,22 @@ export default function Home() {
 
       <section id="faq" className="section-band">
         <div className="wrap section narrow">
-          <p className="eyebrow">FAQ</p>
-          <h2>Good questions</h2>
+          <p className="eyebrow">{c.faq.kicker}</p>
+          <h2>{c.faq.title}</h2>
           <Faq />
         </div>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd()) }} />
       </section>
 
       <section id="start" className="tint">
         <div className="wrap section start-grid">
           <div className="start-copy">
-            <p className="eyebrow">Get in touch</p>
-            <h2>We'd love to know your ideas!</h2>
-            <p>
-              Jonathan created this business to connect directly with people and to help design pieces that will
-              enrich the lives of the clients he builds relationships with. The Hurst Concepts Team is a group of
-              folks who share that goal. Please reach out!
-            </p>
-            <p>
-              Depending on the scale of your project, expect us to reach out to you with estimates or more questions
-              within 1–2 business days.
-            </p>
+            <p className="eyebrow">{c.start.kicker}</p>
+            <h2>{c.start.title}</h2>
+            {c.start.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
             <p className="contact-lines">
-              <a href={`mailto:${contact.email}`}>{contact.email}</a><br />
-              <a href={contact.phoneHref}>{contact.phone}</a><br />
-              {contact.street}, {contact.city}
+              <a href={`mailto:${c.contact.email}`}>{c.contact.email}</a><br />
+              <a href={c.contact.phoneHref}>{c.contact.phone}</a><br />
+              {c.contact.street}, {c.contact.city}
             </p>
             <ShopMap />
           </div>

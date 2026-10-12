@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import { projects } from "@/lib/site";
+import { useContent } from "@/lib/useContent";
 
 export default function WorkGallery() {
   const [kind, setKind] = useState<"furniture" | "millwork">("furniture");
-  const items = projects.filter((p) => p.kind === kind);
+  const items = useContent().work.projects.filter((p) => p.kind === kind);
   return (
     <>
       <div className="tabs" role="tablist" aria-label="Project type">

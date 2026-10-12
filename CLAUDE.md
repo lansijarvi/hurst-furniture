@@ -11,7 +11,13 @@ Rebuild of Hurst Custom Furniture's site, replacing a Format.com template site.
 - Plain CSS in `src/app/globals.css` (no Tailwind). Font: Inter (headings + body) via next/font.
 
 ## Content
-- All editable copy/data is in `src/lib/site.ts` (team, projects, FAQ, contact, review links).
+- All editable copy, lists and image URLs: `src/content/content.json` (typed via `src/lib/content.ts`).
+- Edited at `/admin` (Google sign-in; editors = docs in Firestore `admins/{uid}`). Saves to Firestore `site/content`
+  (`json` string field) + a copy in `siteHistory`. Photos upload to Storage `site/uploads/` (resized to 2000px).
+- Live site renders the built-in JSON, then `useContent()` swaps in the saved Firestore content (REST, no SDK).
+  `npm run share` runs `scripts/pull-content.mjs` first, so saved edits get baked into the static HTML.
+- New content field: add it to content.json, use it via `useContent()`, and add it to `src/app/admin/schema.ts`.
+- `src/lib/site.ts` keeps only fixed links (Google review/maps URLs).
 - Site copy is Hurst's own. Edit with minimal intervention and keep their voice.
 
 ## Look
@@ -21,7 +27,7 @@ Light, modern home: warm white `#fbfaf6`, forest green `#2f5d46` (primary button
 Reviews are a priority: yellow review band under the hero, reviews section right after facts, "Leave a review" in the nav, and `/review` short link (redirects to Google's write-a-review box; use it on cards/QR codes).
 
 ## Wood guide (/woods)
-Data in `woods` in `src/lib/site.ts` (Janka lbf, uses, PNW tag). Photos in `/public/woods/` are from Wikimedia Commons;
+Data in `woods` in `src/content/content.json` (Janka lbf, uses, PNW tag). Photos in `/public/woods/` are from Wikimedia Commons;
 CC BY / BY-SA ones need their `credit` kept (shown under "Photo credits"). Replace with shop photos when available.
 
 ## Open items

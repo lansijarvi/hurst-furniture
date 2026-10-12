@@ -1,6 +1,7 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
+import { getAuth } from "firebase/auth";
 
 const config = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -10,7 +11,16 @@ const config = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
+function app() {
+  return getApps().length ? getApp() : initializeApp(config);
+}
+
 export function firebase() {
-  const app = getApps().length ? getApp() : initializeApp(config);
-  return { db: getFirestore(app), storage: getStorage(app) };
+  const a = app();
+  return { db: getFirestore(a), storage: getStorage(a) };
+}
+
+// Only used by /admin.
+export function firebaseAuth() {
+  return getAuth(app());
 }

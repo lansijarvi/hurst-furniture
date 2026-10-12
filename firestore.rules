@@ -12,6 +12,23 @@ service cloud.firestore {
         && request.resource.data.createdAt == request.time;
       allow read, update, delete: if false;
     }
+    // Site content: anyone can read (the public site loads it); only editors listed in /admins can change it.
+    function isAdmin() {
+      return request.auth != null && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+    match /site/{doc} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    // Every saved version, for rollback. Editors only; never edited or deleted from the site.
+    match /siteHistory/{id} {
+      allow read, create: if isAdmin();
+    }
+    // Editor allowlist: add a doc with your user ID in the Firebase console. Each user can only check their own.
+    match /admins/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if false;
+    }
     // Everything else is closed. (The "mail" collection is written by Cloud Functions only.)
     match /{document=**} { allow read, write: if false; }
   }

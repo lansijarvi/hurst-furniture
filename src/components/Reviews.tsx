@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import Stars from "./Stars";
-import { allReviewsUrl, featuredTestimonial, writeReviewUrl } from "@/lib/site";
+import { allReviewsUrl, writeReviewUrl } from "@/lib/site";
+import { useContent } from "@/lib/useContent";
 
 type Review = {
   author: string;
@@ -41,6 +42,7 @@ export function RatingBadge({ data }: { data: ReviewData | null }) {
 }
 
 export default function Reviews({ full = false }: { full?: boolean }) {
+  const c = useContent().reviews;
   const data = useReviews();
   const reviews = data?.reviews ?? [];
   const shown = full ? reviews : reviews.slice(0, 2);
@@ -48,8 +50,8 @@ export default function Reviews({ full = false }: { full?: boolean }) {
   return (
     <div className="reviews-layout">
       <div className="reviews-intro">
-        <p className="eyebrow">Reviews</p>
-        <h2>What our clients say</h2>
+        <p className="eyebrow">{c.kicker}</p>
+        <h2>{c.title}</h2>
         {data && (
           <div className="rating-card">
             <span className="rating-num">{data.rating.toFixed(1)}</span>
@@ -62,10 +64,7 @@ export default function Reviews({ full = false }: { full?: boolean }) {
         <div className="write-review">
           <Stars size={22} />
           <h3>Worked with us?</h3>
-          <p>
-            Had us build something for you? We'd be grateful if you shared your experience. It takes about a
-            minute and helps your neighbors find us.
-          </p>
+          <p>{c.intro}</p>
           <a href={writeReviewUrl} target="_blank" rel="noopener" className="btn btn-sun btn-big">
             Leave a Google review
           </a>
@@ -78,8 +77,8 @@ export default function Reviews({ full = false }: { full?: boolean }) {
       <div className="reviews-cards">
         <figure className="review-feature">
           <Stars size={20} />
-          <blockquote>{featuredTestimonial.quote}</blockquote>
-          <figcaption>{featuredTestimonial.author}</figcaption>
+          <blockquote>{c.testimonial.quote}</blockquote>
+          <figcaption>{c.testimonial.author}</figcaption>
         </figure>
         {shown.map((r, i) => (
           <figure className="review-card" key={i}>

@@ -1,9 +1,14 @@
+"use client";
 import Link from "next/link";
-import { contact, writeReviewUrl } from "@/lib/site";
+import { usePathname } from "next/navigation";
+import { writeReviewUrl } from "@/lib/site";
+import { useContent } from "@/lib/useContent";
 import Social from "./Social";
 import ShareButton from "./ShareButton";
 
 export default function Footer() {
+  const { contact } = useContent();
+  if (usePathname()?.startsWith("/admin")) return null;
   return (
     <footer className="site-footer">
       <div className="wrap footer-grid">

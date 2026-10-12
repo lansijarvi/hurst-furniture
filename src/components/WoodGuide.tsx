@@ -1,10 +1,11 @@
 "use client";
 import { useState } from "react";
-import { woods } from "@/lib/site";
+import { useContent } from "@/lib/useContent";
 
 const MAX = 2000; // top of the hardness bar scale, lbf
 
 export default function WoodGuide() {
+  const woods = useContent().woods.items;
   const [sort, setSort] = useState<"hard" | "name">("hard");
   const list = [...woods].sort((a, b) => (sort === "hard" ? b.janka - a.janka : a.name.localeCompare(b.name)));
 

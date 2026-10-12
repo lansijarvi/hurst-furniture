@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Stars from "./Stars";
 
@@ -15,7 +16,9 @@ const links = [
 // Magazine-style header: centered masthead, then a dark sticky nav bar.
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const path = usePathname();
   const close = () => setOpen(false);
+  if (path?.startsWith("/admin")) return null;
   return (
     <>
       <header className="masthead">
