@@ -22,6 +22,7 @@ Rebuild of Hurst Custom Furniture's site, replacing a Format.com template site.
 
 ## Look
 Light, modern home: warm white `#fbfaf6`, forest green `#2f5d46` (primary buttons), sage `#eef2e8` (tinted sections), sunshine yellow `#f2c94c` / soft `#fcf3d3` (review CTAs). Magazine feel (inspired by popularwoodworking.com): centered masthead with logo + bold uppercase wordmark, dark sticky nav bar with uppercase links, heavy 800-weight headings, gray uppercase section kickers (`.eyebrow`). Lean and modern to match the logo: Inter, 4px corners, thin borders instead of shadows, uppercase wordmark. Logo in `/public/logo.png` (also `src/app/icon.png` favicon). `.wood` divs are soft sage photo placeholders.
+Light + dark themes: colors are CSS variables on `:root`, dark overrides on `:root[data-theme="dark"]`; sun/moon toggle (`ThemeToggle`) in the masthead (and nav bar on mobile), choice saved in localStorage. Always use the variables, never raw hex, so both themes work.
 
 ## Reviews
 Reviews are a priority: yellow review band under the hero, reviews section right after facts, "Leave a review" in the nav, and `/review` short link (redirects to Google's write-a-review box; use it on cards/QR codes).
