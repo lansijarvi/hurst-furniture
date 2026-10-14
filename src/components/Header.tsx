@@ -3,7 +3,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Stars from "./Stars";
-import ThemeToggle from "./ThemeToggle";
 
 const links = [
   { href: "/#work", label: "Work" },
@@ -34,20 +33,14 @@ export default function Header() {
               <span className="brand-sub">Custom furniture and millwork, Ballard</span>
             </span>
           </Link>
-          <div className="masthead-actions">
-            <ThemeToggle />
-            <Link href="/start" className="btn btn-accent">Start a project</Link>
-          </div>
+          <Link href="/start" className="btn btn-accent masthead-actions">Start a project</Link>
         </div>
       </header>
       <div className="navbar">
         <div className="wrap navbar-row">
-          <div className="navbar-tools">
           <button className="menu-toggle" aria-expanded={open} aria-controls="site-nav" onClick={() => setOpen(!open)}>
             {open ? "Close" : "Menu"}
           </button>
-          <ThemeToggle />
-          </div>
           <nav id="site-nav" aria-label="Main" className={open ? "nav open" : "nav"}>
             {links.map((l) => (
               <Link key={l.href} href={l.href} onClick={close}>{l.label}</Link>

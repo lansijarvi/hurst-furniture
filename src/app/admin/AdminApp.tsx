@@ -141,6 +141,15 @@ export function Editor({ content, onChange, bar, error, initialSection }: { cont
         </nav>
         <main className="admin-main">
           <h1>{section.label}</h1>
+          {section.key === "theme" && (
+            <div className="a-field">
+              <span className="a-hint">Try each theme on the real site before choosing. Previews only show in your browser tab; nothing is saved.</span>
+              <div className="theme-previews">
+                <a className="btn btn-outline" href="/?theme=light" target="_blank" rel="noopener">Preview light ↗</a>
+                <a className="btn btn-outline" href="/?theme=dark" target="_blank" rel="noopener">Preview dark ↗</a>
+              </div>
+            </div>
+          )}
           {section.list ? (
             <FieldEditor field={section.list} value={data} onChange={setSection} />
           ) : (

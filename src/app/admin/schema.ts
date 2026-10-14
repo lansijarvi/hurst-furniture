@@ -14,6 +14,15 @@ const title: Field = { key: "title", label: "Heading", type: "text" };
 
 export const sections: Section[] = [
   {
+    key: "theme", label: "Site look",
+    fields: [
+      { key: "mode", label: "Theme for everyone", type: "select", options: [
+        { value: "light", label: "Light" },
+        { value: "dark", label: "Dark" },
+      ] },
+    ],
+  },
+  {
     key: "hero", label: "Top of home page",
     fields: [
       { key: "title", label: "Big headline", type: "text" },

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ThemeApplier from "@/components/ThemeApplier";
 import { defaultContent } from "@/lib/content";
 
 const { contact } = defaultContent;
@@ -37,15 +38,17 @@ const localBusiness = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={body.variable} suppressHydrationWarning>
+    <html lang="en" className={body.variable} data-theme={defaultContent.theme.mode} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}` }} />
+        {/* Admin preview: ?theme=dark|light shows that theme for this tab only (see ThemeApplier). */}
+        <script dangerouslySetInnerHTML={{ __html: `try{var q=new URLSearchParams(location.search).get("theme");if(q==="off")sessionStorage.removeItem("themePreview");else if(q)sessionStorage.setItem("themePreview",q);var t=sessionStorage.getItem("themePreview");if(t)document.documentElement.dataset.theme=t}catch(e){}` }} />
       </head>
       <body>
         <a href="#main" className="skip">Skip to content</a>
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <ThemeApplier />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }} />
       </body>
     </html>
